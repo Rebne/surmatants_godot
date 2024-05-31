@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfhvsat4mc015"]
+[gd_scene load_steps=4 format=3 uid="uid://dfhvsat4mc015"]
 
 [ext_resource type="PackedScene" uid="uid://bodwcfyd6o5qr" path="res://Scenes/player1.tscn" id="1_qgi85"]
 [ext_resource type="Texture2D" uid="uid://bmrj68y6gtxk4" path="res://Assets/areen/test.jpg" id="2_ulwcl"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dd2js"]
 
 [node name="Game" type="Node2D"]
 
@@ -25,3 +27,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ulwcl")
 stretch_mode = 6
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_dd2js")
