@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5qbts2n4ayd2"]
+[gd_scene load_steps=14 format=3 uid="uid://c5qbts2n4ayd2"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_c4d0v"]
 [ext_resource type="Texture2D" uid="uid://bjvojlvxc4dle" path="res://Assets/menu_frames/00001.jpg" id="2_upoqn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://71dwxc60y362" path="res://Assets/menu_frames/00010.jpg" id="5_4w4d6"]
 [ext_resource type="Texture2D" uid="uid://dpr1sdqcylxnk" path="res://Assets/menu_frames/00013.jpg" id="6_mgiyj"]
 [ext_resource type="Texture2D" uid="uid://du3ucawsy7mg4" path="res://Assets/menu_frames/00016.jpg" id="7_buwk5"]
+[ext_resource type="FontFile" uid="uid://drqi5xgno34ls" path="res://Assets/fonts/dimitri.ttf" id="8_jqc1o"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_8o5vd"]
 frames = 6
@@ -22,6 +23,14 @@ frame_4/texture = ExtResource("6_mgiyj")
 frame_4/duration = 0.1
 frame_5/texture = ExtResource("7_buwk5")
 frame_5/duration = 0.1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4xea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ts7jc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5bmkt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0cp4k"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -52,6 +61,12 @@ text = "Surmatants"
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("8_jqc1o")
+theme_override_font_sizes/font_size = 73
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n4xea")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ts7jc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5bmkt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0cp4k")
 text = "Play"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
