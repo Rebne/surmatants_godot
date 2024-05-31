@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpyqtmfxp13oq"]
+
+[ext_resource type="AudioStream" uid="uid://bg61rg2t8otor" path="res://Assets/sounds/thunderstorm.mp3" id="1_pp58l"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_pp58l")
+volume_db = -0.99
+autoplay = true

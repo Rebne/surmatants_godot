@@ -1,28 +1,29 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5qbts2n4ayd2"]
+[gd_scene load_steps=9 format=3 uid="uid://c5qbts2n4ayd2"]
 
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_c4d0v"]
-[ext_resource type="Texture2D" uid="uid://bjvojlvxc4dle" path="res://Assets/menu_frames/00001.jpg" id="2_upoqn"]
-[ext_resource type="Texture2D" uid="uid://i51vbld5upy6" path="res://Assets/menu_frames/00004.jpg" id="3_8ocsj"]
-[ext_resource type="Texture2D" uid="uid://bidkqmcv72yki" path="res://Assets/menu_frames/00007.jpg" id="4_kumie"]
-[ext_resource type="Texture2D" uid="uid://71dwxc60y362" path="res://Assets/menu_frames/00010.jpg" id="5_4w4d6"]
-[ext_resource type="Texture2D" uid="uid://dpr1sdqcylxnk" path="res://Assets/menu_frames/00013.jpg" id="6_mgiyj"]
-[ext_resource type="Texture2D" uid="uid://du3ucawsy7mg4" path="res://Assets/menu_frames/00016.jpg" id="7_buwk5"]
+[ext_resource type="PackedScene" uid="uid://cptxxjrs1mgk3" path="res://Scenes/menu_background.tscn" id="1_jn3lq"]
 [ext_resource type="FontFile" uid="uid://drqi5xgno34ls" path="res://Assets/fonts/dimitri.ttf" id="8_jqc1o"]
+[ext_resource type="FontFile" uid="uid://cy2t7hya6rl0r" path="res://Assets/fonts/snowmelt.ttf" id="9_kt4pb"]
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_8o5vd"]
-frames = 6
-frame_0/texture = ExtResource("2_upoqn")
-frame_0/duration = 0.1
-frame_1/texture = ExtResource("3_8ocsj")
-frame_1/duration = 0.1
-frame_2/texture = ExtResource("4_kumie")
-frame_2/duration = 0.1
-frame_3/texture = ExtResource("5_4w4d6")
-frame_3/duration = 0.1
-frame_4/texture = ExtResource("6_mgiyj")
-frame_4/duration = 0.1
-frame_5/texture = ExtResource("7_buwk5")
-frame_5/duration = 0.1
+[sub_resource type="GDScript" id="GDScript_fprt4"]
+script/source = "extends Control
+@onready var background = $Background
+
+const FRAME_DURATION = 0.1
+
+func _ready():
+	for i in range(6):
+		background.texture.set_frame_duration(i, FRAME_DURATION)
+		
+func _on_play_pressed():
+	get_tree().change_scene_to_file(\"res://Scenes/game.tscn\")
+
+func _on_options_pressed():
+	get_tree().change_scene_to_file(\"res://Scenes/options.tscn\")
+
+
+func _on_exit_pressed():
+	get_tree().quit()
+"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4xea"]
 
@@ -39,44 +40,75 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_c4d0v")
+script = SubResource("GDScript_fprt4")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 258.0
-offset_bottom = 184.0
-texture = SubResource("AnimatedTexture_8o5vd")
+[node name="Background" parent="." instance=ExtResource("1_jn3lq")]
+layout_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("9_kt4pb")
+theme_override_font_sizes/font_size = 91
 text = "Surmatants"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_jqc1o")
 theme_override_font_sizes/font_size = 73
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n4xea")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_ts7jc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_5bmkt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5bmkt")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0cp4k")
-text = "Play"
+text = "Alusta"
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Options"
+theme_override_fonts/font = ExtResource("8_jqc1o")
+theme_override_font_sizes/font_size = 73
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n4xea")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ts7jc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5bmkt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5bmkt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0cp4k")
+text = "Areen"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Quit"
+theme_override_fonts/font = ExtResource("8_jqc1o")
+theme_override_font_sizes/font_size = 73
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n4xea")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ts7jc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5bmkt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5bmkt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0cp4k")
+text = "Sulge"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Exit" to="." method="_on_exit_pressed"]

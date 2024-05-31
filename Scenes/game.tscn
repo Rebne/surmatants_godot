@@ -1,10 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfhvsat4mc015"]
+[gd_scene load_steps=3 format=3 uid="uid://dfhvsat4mc015"]
 
-[ext_resource type="Texture2D" uid="uid://cw08i6v3o0ccb" path="res://icon.svg" id="1_ue5mh"]
+[ext_resource type="PackedScene" uid="uid://bodwcfyd6o5qr" path="res://Scenes/player1.tscn" id="1_qgi85"]
+[ext_resource type="Texture2D" uid="uid://bmrj68y6gtxk4" path="res://Assets/areen/test.jpg" id="2_ulwcl"]
 
 [node name="Game" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ue5mh")
+[node name="Player" parent="." instance=ExtResource("1_qgi85")]
+z_index = 1
+position = Vector2(-123, -2)
+scale = Vector2(6, 6)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2, -209)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -580.0
+offset_top = -533.0
+offset_right = 574.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ulwcl")
+stretch_mode = 6

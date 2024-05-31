@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs6lo3p5fu1jt"]
+
+[ext_resource type="FontFile" uid="uid://drqi5xgno34ls" path="res://Assets/fonts/dimitri.ttf" id="1_6xxwf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4xea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ts7jc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5bmkt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0cp4k"]
+
+[node name="Button" type="Button"]
+theme_override_fonts/font = ExtResource("1_6xxwf")
+theme_override_font_sizes/font_size = 73
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n4xea")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ts7jc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5bmkt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5bmkt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0cp4k")
+text = "Sulge"

@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://e7i75vqnv8v1"]
+[gd_scene load_steps=5 format=3 uid="uid://e7i75vqnv8v1"]
 
 [ext_resource type="Script" path="res://Scripts/options.gd" id="1_lsyuy"]
+[ext_resource type="PackedScene" uid="uid://cptxxjrs1mgk3" path="res://Scenes/menu_background.tscn" id="2_ou1hi"]
+[ext_resource type="PackedScene" uid="uid://cs6lo3p5fu1jt" path="res://Scenes/menu_button.tscn" id="3_1d117"]
+[ext_resource type="Texture2D" uid="uid://dp2aw0bisubw3" path="res://Assets/areen/galaktika.jpg" id="3_408eo"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -11,20 +14,44 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lsyuy")
 
+[node name="Background" parent="." instance=ExtResource("2_ou1hi")]
+layout_mode = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Volume" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Volume"
 
-[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Back"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Button"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/HBoxContainer/Button/HBoxContainer"]
+texture = ExtResource("3_408eo")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Button/HBoxContainer"]
+layout_mode = 2
+text = "galaktika"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Back" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_1d117")]
+layout_mode = 2
+text = "tagasi"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
