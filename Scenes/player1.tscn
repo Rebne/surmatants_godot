@@ -289,7 +289,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -332,5 +332,5 @@ shape = SubResource("CapsuleShape2D_n0td7")
 texture_filter = 1
 position = Vector2(1, -22)
 sprite_frames = SubResource("SpriteFrames_asajo")
-animation = &"run"
+animation = &"jump"
 autoplay = "idle"
