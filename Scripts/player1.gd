@@ -1,17 +1,22 @@
 extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var health_bar = $HealthBar
 
 const SPEED = 900
-
+const MAX_HEALTH = 3
 const JUMP_VELOCITY = -2700
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var num = 12
+var health: int = 0
 
-var on_wall: bool = false
 
+func take_damage() -> void:
+	health += 1
+	health_bar.value = health
+	
 func _physics_process(delta):
 	# Add the gravity
 	if not is_on_floor():
@@ -19,6 +24,7 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump_p1") and is_on_floor():
+		take_damage()
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
