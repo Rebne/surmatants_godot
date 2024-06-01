@@ -6,13 +6,15 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dd2js"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2s875"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f6tlf"]
 normal = Vector2(1, 0)
+distance = 581.0
 
 [node name="Game" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-811.0]
 
-[node name="Player" parent="." instance=ExtResource("1_qgi85")]
+[node name="Player1" parent="." instance=ExtResource("1_qgi85")]
+unique_name_in_owner = true
 z_index = 1
 position = Vector2(100, -2)
 scale = Vector2(6, 6)
@@ -49,12 +51,12 @@ scale = Vector2(-1.83638, -1.06914)
 position = Vector2(2.37611, 217.03)
 shape = SubResource("WorldBoundaryShape2D_dd2js")
 
-[node name="Left" type="StaticBody2D" parent="Borders"]
-position = Vector2(-581, -153)
+[node name="w" type="StaticBody2D" parent="Borders"]
+position = Vector2(-582, -44)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left"]
-position = Vector2(-1, 0)
-shape = SubResource("WorldBoundaryShape2D_2s875")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/w"]
+position = Vector2(-580, 0)
+shape = SubResource("WorldBoundaryShape2D_f6tlf")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("3_yf313")
