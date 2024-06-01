@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/player1.gd" id="1_ql4wt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n0td7"]
-radius = 5.0
+radius = 4.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jet12"]
 atlas = ExtResource("1_7pc56")
@@ -325,12 +325,12 @@ animations = [{
 script = ExtResource("1_ql4wt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -15)
+position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_n0td7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1, -22)
+position = Vector2(0, -22)
 sprite_frames = SubResource("SpriteFrames_asajo")
 animation = &"jump"
 autoplay = "idle"
