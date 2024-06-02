@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj66bveybo6jb"]
+
+[ext_resource type="Script" path="res://Scripts/text.gd" id="1_ik1k2"]
+
+[node name="Text" type="Label"]
+offset_left = -72.0
+offset_top = -387.0
+offset_right = -13.0
+offset_bottom = -357.0
+scale = Vector2(2.68, 2.52)
+text = "FIGHT!"
+script = ExtResource("1_ik1k2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

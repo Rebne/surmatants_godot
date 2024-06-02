@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfhvsat4mc015"]
+[gd_scene load_steps=7 format=3 uid="uid://dfhvsat4mc015"]
 
 [ext_resource type="PackedScene" uid="uid://bodwcfyd6o5qr" path="res://Scenes/player1.tscn" id="1_qgi85"]
 [ext_resource type="Texture2D" uid="uid://bmrj68y6gtxk4" path="res://Assets/areen/test.jpg" id="2_ulwcl"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="3_yf313"]
+[ext_resource type="PackedScene" uid="uid://bj66bveybo6jb" path="res://Scenes/text.tscn" id="4_j3hj0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dd2js"]
 
@@ -60,3 +61,5 @@ shape = SubResource("WorldBoundaryShape2D_f6tlf")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("3_yf313")
+
+[node name="Fight" parent="GameManager" instance=ExtResource("4_j3hj0")]
